@@ -1,6 +1,18 @@
 Depot::Application.routes.draw do
-  get "store/index"
+  resources :users
 
+  resources :orders
+
+  resources :line_items
+
+  resources :carts
+
+  get "store/index"
+  
+  resources :products do
+    get :who_bought, :on => :member
+  end
+  
   resources :products
 
   # The priority is based upon order of creation:
